@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '@/page/index/index'
 import Classify from '@/page/classify/index'
 import Ranking from '@/page/ranking/index'
+import Book from '@/page/book/index'
 Vue.use(Router)
 
 export default new Router({
@@ -21,6 +22,11 @@ export default new Router({
     path: '/ranking',
     name: 'ranking',
     component: Ranking
-  }
+  } ,
+    {
+      path: '/book',
+      name: 'book',
+      component: Book
+    }
   ]
 })

@@ -85,12 +85,12 @@ $baseBg: #a80a0b;
   top:$top;
   border-top:1px solid $color;
 }
-@mixin borderLeft($color){
+@mixin borderLeft($top:0,$bottom:0,$left:0,$right:0,$color:#f7f7f7){
   content: '';
   position: absolute;
-  left:0;
-  bottom:0;
-  top:0;
+  left:$left;
+  bottom:$bottom;
+  top:$top;
   border-left:1px solid $color;
 }
 @mixin borderRight($top:0,$bottom:0,$left:0,$right:0,$color:#f7f7f7){

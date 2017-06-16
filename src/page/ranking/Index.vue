@@ -2,6 +2,7 @@
   <div>
     <section class="ranking-class">
       <headerComponent title='排行榜'>
+        <span slot='left' onclick="window.history.go(-1)">返回</span>
       </headerComponent>
         <div class="tabs">
             <div class="tab-item" :class="topActive == 1 ? 'active':''" @click="topTagger(1)">男生</div>
@@ -20,18 +21,20 @@
         <div class="right" id="rankRight">
           <ul>
             <transition-group name="list" tag="p">
-                <li v-for="(item,index) in rankBooks" :key="item">
-                <div class="list-item">
-                  <!--<div class="left-img">
-                    <img :src="clacImg(item.cover)" >
-                  </div>-->
-                  <div class="right-item">
-                    <h4>{{item.title}}</h4>
-                    <p><span>{{item.author}}</span><span>{{item.cat}}</span></p>
-                    <p class="des">{{item.shortIntro}}</p>
-                    <p><span><label>{{calcNum(item.latelyFollower)}}</label>万人气</span><span><label>{{item.retentionRatio}}%</label>读者留存</span></p>
-                  </div>
-                </div>
+                <li v-for="(item,index) in rankBooks" :key="item" >
+                  <router-link :to="{path:'book',query:{bookId:item._id}}">
+                    <div class="list-item">
+                      <div class="left-img">
+                        <img v-if="item" :src="item.cover.indexOf('http') === -1 ? staticPath + item.cover : item.cover.slice(item.cover.indexOf('http')).trim()" onerror="javascript:this.src='http://img.zcool.cn/community/01cbd85562cff30000009c5063f324.jpg'">
+                      </div>
+                      <div class="right-item">
+                        <h4>{{item.title}}</h4>
+                        <p><span>{{item.author}}</span><span>{{item.cat}}</span></p>
+                        <p class="des">{{item.shortIntro}}</p>
+                        <p><span><label>{{calcNum(item.latelyFollower)}}</label>万人气</span><span><label>{{item.retentionRatio}}%</label>读者留存</span></p>
+                      </div>
+                    </div>
+                  </router-link>
               </li>
             </transition-group>
           </ul>
@@ -65,7 +68,7 @@ export default {
     },
     tagger(id,index){
       this.leftActive = index;
-      novel.getRankById(id,rankbooks=>{
+      novel.getRankById( id,rankbooks => {
          this.rankBooks=rankbooks.ranking.books;
       });
       //滚动条回到顶部
@@ -80,7 +83,7 @@ export default {
     }
   },
   mounted(){
-    novel.getRanking(ranking =>{
+    novel.getRanking( ranking => {
       this.allRank = ranking;
       this.ranking = this.allRank.male;
       this.tagger(ranking.male[0]._id,0);
@@ -94,7 +97,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  @import "../../style/mixin";
+  @import "../../style/mixin.scss";
   .ranking-class{
     display: flex;
     flex-direction: column;

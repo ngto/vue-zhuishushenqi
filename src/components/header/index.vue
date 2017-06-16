@@ -45,12 +45,32 @@ export default {
         -webkit-box-flex: .5;
         -ms-flex: .5;
         flex: .5;
+        span{
+          color: #ffffff;
+          display: inline-block;
+          position: relative;
+          display: flex;
+          padding-left:16px;
+          &:before{
+             content: '';
+             position: absolute;
+             left:0;
+             top:0;
+             bottom:0;
+             width:16px;
+             background: url("../../assets/back.png") no-repeat center 14px;
+           }
+        }
+        height:2rem;
+        line-height:2rem;
+
       }
     .header-right{
         text-align: right;
         -webkit-box-flex: .5;
         -ms-flex: .5;
         flex: .5;
+       color: #ffffff;
     }
     h1{
       overflow: hidden;

@@ -5,9 +5,12 @@ import App from './App'
 import router from './router'
 import './config/rem'
 import mock from './api/mock'
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
 
 Vue.config.productionTip = false
 
+Vue.use(Mint);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

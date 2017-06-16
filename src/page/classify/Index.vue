@@ -1,7 +1,7 @@
 <template>
   <div>
     <headerComponent title='分类'>
-       <!--<span slot='left' class="head_logo">ZSSQ</span>-->
+      <span slot='left' onclick="window.history.go(-1)">返回</span>
     </headerComponent>
     <section class="novel-class">
        <h1>男生</h1>
