@@ -41,6 +41,9 @@
         </div>
       </div>
     </section>
+    <div class="mask" v-show="loadingFlag">
+       <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
+    </div>
   </div>
 </template>
 
@@ -48,7 +51,7 @@
 //获取数据
 import novel from '@/api/novel.js'
 import headerComponent from '@/components/header/index'
-
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 export default {
   name: 'index',
   data () {
@@ -57,7 +60,8 @@ export default {
         allRank:[],
         rankBooks:[],
         leftActive:0,
-        topActive:1
+        topActive:1,
+        loadingFlag:true
     }
   },
   methods:{
@@ -68,8 +72,10 @@ export default {
     },
     tagger(id,index){
       this.leftActive = index;
+      this.loadingFlag = true;
       novel.getRankById( id,rankbooks => {
-         this.rankBooks=rankbooks.ranking.books;
+         this.rankBooks = rankbooks.ranking.books;
+         this.loadingFlag= false;
       });
       //滚动条回到顶部
       document.getElementById('rankRight').scrollTop =0;
@@ -90,7 +96,8 @@ export default {
     })
   },
   components:{
-    headerComponent
+    headerComponent,
+    PulseLoader
   }
 }
 </script>
@@ -219,5 +226,16 @@ export default {
     &:before{
      @include borderBottom();
      }
+  }
+  .mask{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+   justify-content: center;
   }
 </style>
