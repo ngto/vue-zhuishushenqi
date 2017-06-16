@@ -2,7 +2,6 @@
   <div>
     <section class="ranking-class">
       <headerComponent title='排行榜'>
-        <!--<span slot='left' class="head_logo">ZSSQ</span>-->
       </headerComponent>
         <div class="tabs">
             <div class="tab-item" :class="topActive == 1 ? 'active':''" @click="topTagger(1)">男生</div>

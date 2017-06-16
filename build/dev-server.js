@@ -52,6 +52,7 @@ Object.keys(proxyTable).forEach(function (context) {
   }
   app.use(proxyMiddleware(options.filter || context, options))
 })
+
 //mock数据
 app.use('/mock/news', mockRouterNews)
 

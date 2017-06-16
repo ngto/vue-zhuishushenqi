@@ -4,7 +4,9 @@
       <slot name='left'></slot>
     </div>
      <h1>{{title}}</h1>
-    <div class="header-right"></div>
+    <div class="header-right">
+      <slot name='right'></slot>
+    </div>
   </div>
 </template>
 

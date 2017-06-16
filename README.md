@@ -1,9 +1,30 @@
-# vue-zhuishushenqi
+# vue-demo
 
-##1、使用vue2.0
+> A Vue.js project
 
-##2、项目启动请先到static文件夹下面启动node代理
+## Build Setup
 
-##3、启动完成即可启动项目
+``` bash
+# install dependencies
+npm install
 
-##本使用数据来自“追书神器”,参照https://github.com/zimplexing/vue-nReader的数据api接口。若有问题请联系qq：291114205.
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
+```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
