@@ -22,7 +22,7 @@
           <ul>
             <transition-group name="list" tag="p">
                 <li v-for="(item,index) in rankBooks" :key="item" >
-                  <router-link :to="{path:'book',query:{bookId:item._id}}">
+                  <router-link :to="'/book/'+item._id">
                     <div class="list-item">
                       <div class="left-img">
                         <img v-if="item" :src="item.cover.indexOf('http') === -1 ? staticPath + item.cover : item.cover.slice(item.cover.indexOf('http')).trim()" onerror="javascript:this.src='http://img.zcool.cn/community/01cbd85562cff30000009c5063f324.jpg'">
@@ -226,16 +226,5 @@ export default {
     &:before{
      @include borderBottom();
      }
-  }
-  .mask{
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-   justify-content: center;
   }
 </style>

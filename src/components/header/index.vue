@@ -58,7 +58,7 @@ export default {
              top:0;
              bottom:0;
              width:16px;
-             background: url("../../assets/back.png") no-repeat center 14px;
+             background: url("../../assets/back.png") no-repeat center 15px;
            }
         }
         height:2rem;

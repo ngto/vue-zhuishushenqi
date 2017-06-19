@@ -12,8 +12,8 @@
              <p><span :class="bookInfo.allowMonthly ? 'bg book-yn ' : 'book-yn'">{{ !bookInfo.allowMonthly ? "不支持包月" : " 支持包月"}}</span><span :class="bookInfo.allowVoucher ? 'bg book-yn ' : 'book-yn'">卷</span><span :class="bookInfo.allowBeanVoucher ? 'bg book-yn' : 'book-yn'">豆</span></p>
         </div>
       <div class="book-operation">
-        <mt-button type="default" :class="bookFlag ? 'noOrYue' : ''" @click="bookChange">{{ !bookFlag ? "不追了" : " 加追书"}}</mt-button>
-        <mt-button type="danger">开始阅读</mt-button>
+          <mt-button type="default" :class="bookFlag ? 'noOrYue' : ''" @click="bookChange">{{ !bookFlag ? "不追了" : " 加追书"}}</mt-button>
+          <mt-button type="danger" @click="goBookContent(bookInfo._id)">开始阅读</mt-button>
       </div>
       <div class="book-des">
          <div>
@@ -36,12 +36,16 @@
         <p>{{bookInfo.longIntro}}</p>
       </div>
     </section>
+    <div class="mask" v-show="loadingFlag">
+      <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
+    </div>
   </div>
 </template>
 
 <script>
 import novel from '@/api/novel.js'
 import headerComponent from '@/components/header/index'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import moment from 'moment'
 
 export default {
@@ -51,21 +55,25 @@ export default {
         bookInfo:'',
         staticPath: 'http://statics.zhuishushenqi.com/',
         bookFlag:true,
+        loadingFlag:true
     }
   },
   mounted(){
-    this.getBookById(this.$route.query.bookId);
+    this.getBookById(this.$route.params.bookId);
   },
   methods:{
     getBookById(bookId){
-      console.log(bookId);
       novel.getBookById(bookId,book => {
         this.bookInfo = book.data;
         console.log(book.data);
+        this.loadingFlag = false;
       })
     },
     bookChange(){
        this.bookFlag = !this.bookFlag;
+    },
+    goBookContent(id){
+      this.$router.push('/bookContent/' + id)
     }
   },
   computed:{
@@ -82,6 +90,7 @@ export default {
   },
   components:{
     headerComponent,
+    PulseLoader
   }
 }
 </script>
@@ -252,4 +261,5 @@ export default {
     background-color: $baseBg !important;
     border-color: $baseBg !important;
   }
+
 </style>

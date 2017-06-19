@@ -4,6 +4,7 @@ import Index from '@/page/index/index'
 import Classify from '@/page/classify/index'
 import Ranking from '@/page/ranking/index'
 import Book from '@/page/book/index'
+import BookContent from '@/page/bookContent/index'
 Vue.use(Router)
 
 export default new Router({
@@ -24,9 +25,14 @@ export default new Router({
     component: Ranking
   } ,
     {
-      path: '/book',
+      path: '/book/:bookId',
       name: 'book',
       component: Book
+    },
+    {
+      path: '/bookContent/:bookId',
+      name: 'bookContent',
+      component: BookContent
     }
   ]
 })

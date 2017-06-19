@@ -5,14 +5,17 @@ import App from './App'
 import router from './router'
 import './config/rem'
 import mock from './api/mock'
-import Mint from 'mint-ui';
-import 'mint-ui/lib/style.css';
+import Mint from 'mint-ui'
+import 'mint-ui/lib/style.css'
+import VueTouch from 'vue-touch'
 
 
-
+Vue.use(VueTouch, {name: 'v-touch'})
+Vue.use(Mint);
 Vue.config.productionTip = false
 
-Vue.use(Mint);
+
+
 
 /* eslint-disable no-new */
 new Vue({

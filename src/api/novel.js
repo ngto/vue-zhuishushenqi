@@ -3,7 +3,7 @@ import axios from 'axios'
 
 //本地服务器地址
 //const proxyServer = 'http://192.168.1.156:3000';
-const proxyServer = 'http://35.189.165.140:3000';
+const proxyServer = 'http://63.223.75.86:3000';
 export default {
   /*getNovelClassifyAll (callback) {
     axios.get(proxyServer + '/getClassify').then(res => {
@@ -42,6 +42,16 @@ export default {
       axios.get(proxyServer + '/book/'+id).then( res =>{
         callback(res)
       })
+  },
+  getBookContent(id,callback){
+    axios.get(proxyServer + '/mix-atoc/'+id+'?view=chapters').then( res =>{
+      callback(res)
+    })
+  },
+  getBookChapterContent(chapterUrl,callback){
+    axios.get(proxyServer + "/getChapter?chapterUrl="+ chapterUrl).then( res =>{
+      //axios.get(proxyServer + "/getChapter?chapterUrl="+ chapterUrl).then( res =>{
+        callback(res)
+      })
   }
-
 }
